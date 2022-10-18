@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/x650c
+x650c.so
+x650c.dylib
+x650c.dll
+x650c.a
+x650c.lib
+x650c-test-*
+*.exe
+*.o
+*.obj
+*.lst
