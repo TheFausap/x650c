@@ -225,6 +225,39 @@ void init()
 	for(int i=0;i<drum.length;i++) {
 		drum[i].length=11;
 	}
+
+	address_register = [0,0,0,0,0,0,0,0,0,1,'+'];
+}
+
+void mywr(int[] a)
+{
+	char c = 0;
+
+	for(long i=0;i<a.length-1;i++) {
+		write(a[i]);
+	}
+	c = cast(char)a[$-1];
+	write(c);
+}
+
+void mywru(int[] a)
+{
+	char c = 0;
+
+	for(long i=0;i<a.length;i++) {
+		write(a[i]);
+	}
+}
+
+void dump()
+{
+	write("D ");mywr(distributor); writeln();
+	write("A ");mywru(upper_accumulator);mywr(lower_accumulator);
+	writeln();
+	write("P ");mywr(program_register); writeln();
+	write("O ");mywr(op_register); writeln();
+	write("AD ");mywr(address_register); writeln();
+	write("CSW ");mywr(control_console_sw); writeln();
 }
 
 void main()
@@ -234,9 +267,11 @@ void main()
 
 	init();
 
-	writeln(n1); writeln(n2);
+	drum[1] = [1,0,0,3,4,5,0,1,0,0,'+'];
+	drum[100] = [1,1,0,3,4,5,0,1,2,0,'+'];
+	drum[345] = [0,0,0,0,0,0,4,6,6,7,'+'];
 
-	add(n1,n2);
+	microcode();
 
-	writeln(n1);
+	dump();
 }
